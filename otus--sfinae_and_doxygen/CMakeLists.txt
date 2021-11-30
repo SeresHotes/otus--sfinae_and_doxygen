@@ -1,9 +1,15 @@
-﻿# CMakeList.txt: проект CMake для otus--sfinae_and_doxygen; включите исходный код и определения,
-# укажите здесь логику для конкретного проекта.
-#
-cmake_minimum_required (VERSION 3.8)
+﻿cmake_minimum_required (VERSION 3.12)
 
-# Добавьте источник в исполняемый файл этого проекта.
-add_executable (otus--sfinae_and_doxygen "otus--sfinae_and_doxygen.cpp" "otus--sfinae_and_doxygen.h")
+project(print_ip)
 
-# TODO: Добавьте тесты и целевые объекты, если это необходимо.
+add_executable (otus--sfinae_and_doxygen "main.cpp"  "ip_gen.cpp"  "ip_gen.h")
+add_executable (target_test "test.cpp")
+ 
+set_property(TARGET otus--sfinae_and_doxygen PROPERTY CXX_STANDARD 17)
+set_property(TARGET target_test PROPERTY CXX_STANDARD 17)
+
+find_package(GTest CONFIG REQUIRED)
+target_link_libraries(target_test PRIVATE GTest::gtest GTest::gtest_main)
+
+enable_testing()
+add_test(test_ip_print target_test)
