@@ -5,13 +5,23 @@
 #include <string>
 #include <unordered_set>
 
-#include "ip_gen.h"
 
+#include "ip_gen.h"
+ 
 TEST(is_const_iterableTest, test) {
     EXPECT_EQ(is_const_iterable_v<int>, false);
     EXPECT_EQ(is_const_iterable_v<std::vector<int>>, true);
     EXPECT_EQ(is_const_iterable_v<std::list<int>>, true);
     EXPECT_EQ(is_const_iterable_v<std::string>, true);
+    EXPECT_EQ(is_const_iterable_v<std::unordered_set<int>>, true);
+}
+TEST(is_one_type_tupleTest, test) {
+    bool t = is_one_type_tuple_v<std::tuple<int, int, int, int>>;
+    EXPECT_EQ(t, true);
+    t = is_one_type_tuple<std::tuple<int, char, int, int>>::value;
+    EXPECT_EQ(t, false);
+    EXPECT_EQ(is_one_type_tuple_v<std::tuple<>>, true);
+    EXPECT_EQ(is_one_type_tuple_v<int>, false);
     EXPECT_EQ(is_const_iterable_v<std::unordered_set<int>>, true);
 }
 
@@ -58,15 +68,16 @@ TEST(ipPrintTest, containerTypeTest) {
     std::vector<int> arr2 = { 192, 168, 0, 1 };
     ip_print(out, arr2);
     EXPECT_EQ(out.str(), "192.168.0.1\n");
-}
+}    
+ 
+TEST(ipPrintTest, tupleTypeTest) {
+    std::stringstream out;
 
-//TEST(ipPrintTest, tupleTypeTest) {
-//    std::stringstream out;
-//
-//    std::tuple<int, int, int, int> tpl = { 127, 0, 0, 1 };
-//    ip_print(out, tpl);
-//    EXPECT_EQ(out.str(), "127.0.0.1\n");
-//    out.str("");
-//
-//} 
+    const std::tuple<int, int, int, int> tpl = { 127, 0, 0, 1 };
+    ip_print(out, tpl);
+    EXPECT_EQ(out.str(), "127.0.0.1\n");
+    out.str("");
 
+}   
+
+ 
