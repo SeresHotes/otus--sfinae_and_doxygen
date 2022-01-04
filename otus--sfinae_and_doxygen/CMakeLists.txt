@@ -28,7 +28,7 @@ endif()
 
 
 
-find_package(GTest CONFIG REQUIRED)
+find_package(GTest REQUIRED)
 target_link_libraries(target_test PRIVATE GTest::gtest GTest::gtest_main)
  
 enable_testing()
