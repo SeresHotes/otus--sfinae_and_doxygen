@@ -17,8 +17,8 @@ struct is_const_iterable<T, std::void_t<
     constexpr static bool value = true;
 };
 
-template<class T, typename V = void>
-constexpr bool is_const_iterable_v = typename is_const_iterable<T, V>::value;
+template<class T>
+constexpr bool is_const_iterable_v = is_const_iterable<T>::value;
 
 
 
@@ -32,7 +32,7 @@ struct check_type <Type> : std::true_type {};
 
 template <class Type, class ...Args>
 struct check_type <Type, Type, Args...> {
-    constexpr static bool value = typename check_type<Type, Args...>::value;
+    constexpr static bool value = check_type<Type, Args...>::value;
 };
 
 template <class Type, class T>
@@ -53,5 +53,5 @@ struct is_one_type_tuple<std::tuple<T, Args...>> : check_type<T, Args...> {};
 
 template <class T>
 constexpr bool is_one_type_tuple_v = 
-    typename is_one_type_tuple<std::remove_const_t<std::remove_reference_t<T>>>::value;
+    is_one_type_tuple<std::remove_const_t<std::remove_reference_t<T>>>::value;
 

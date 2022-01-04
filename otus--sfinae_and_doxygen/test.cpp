@@ -7,7 +7,7 @@
 
 
 #include "ip_gen.h"
- 
+
 TEST(is_const_iterableTest, test) {
     EXPECT_EQ(is_const_iterable_v<int>, false);
     EXPECT_EQ(is_const_iterable_v<std::vector<int>>, true);
