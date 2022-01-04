@@ -8,7 +8,7 @@ int main() {
 	ip_print(cout, char(-1));
 	ip_print(cout, short(0));
 	ip_print(cout, int(2130706433));
-	ip_print(cout, long(8875824491850138409));
+	ip_print(cout, 8875824491850138409LL);
 	ip_print(cout, std::string("192.168.0.1"));
 	ip_print(cout, std::vector<int>{147, 0, 0, 1});
 	ip_print(cout, std::list<int>{127, 99, 0, 1});
