@@ -2,7 +2,7 @@
 
 project(print_ip)
 
-add_executable (print_ip "main.cpp"  "ip_gen.h")
+add_executable (print_ip "main.cpp")
 add_executable (target_test "test.cpp")
  
 set_property(TARGET print_ip PROPERTY CXX_STANDARD 17)
