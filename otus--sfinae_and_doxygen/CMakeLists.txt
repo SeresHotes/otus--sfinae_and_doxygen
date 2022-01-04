@@ -1,6 +1,12 @@
 ﻿cmake_minimum_required (VERSION 3.12)
 
-project(print_ip)
+
+if(NOT DEFINED PATCH_VERSION)
+    set(PATCH_VERSION "1" ) 
+endif()
+
+project(print_ip VERSION 0.0.${PATCH_VERSION})
+
 
 add_executable (print_ip "main.cpp")
 add_executable (target_test "test.cpp")
@@ -45,7 +51,7 @@ set(CPACK_GENERATOR DEB)
 set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
 set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
-
+ 
 set(CPACK_PACKAGE_CONTACT example@example.com)
 
 include(CPack)
