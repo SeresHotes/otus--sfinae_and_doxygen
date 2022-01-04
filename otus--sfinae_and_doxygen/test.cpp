@@ -43,7 +43,7 @@ TEST(ipPrintTest, integralTypeTest) {
     EXPECT_EQ(out.str(), "127.0.0.1\n");
     out.str("");
 
-    ip_print(out, long long(8875824491850138409));
+    ip_print(out, 8875824491850138409LL);
     EXPECT_EQ(out.str(), "123.45.67.89.101.112.131.41\n");
 } 
 
