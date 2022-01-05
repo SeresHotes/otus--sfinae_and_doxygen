@@ -4,7 +4,16 @@
 #include <iostream>
 
 #include "traits.h"
-
+/**
+ * \brief Prints numbers in ip format
+ *
+ * This function can accept val of folowing types:
+ * 1) integral
+ * 2) std::string
+ * 3) iterable
+ * 4) std::tuple<Args...>, where Args.. have all the same type
+ *
+ */
 template<class T,
         typename std::enable_if_t<std::is_integral_v<T>, bool> = true>
 void ip_print(std::ostream& out, T&& val) {
@@ -37,9 +46,10 @@ void ip_print(std::ostream& out, T&& val) {
 
 } 
 
-template<class T, typename std::enable_if_t<is_one_type_tuple_v<T>, bool> = true>
+template<class T, 
+    typename std::enable_if_t<is_one_type_tuple_v<std::remove_const_t<std::remove_reference_t<T>>>, bool> = true>
 void ip_print(std::ostream& out, T&& val) {
     std::string str = "";
-    std::apply([&out, &str](auto&& ...arg) { ((out << str << arg, str = "."), ...); }, val);
+    std::apply([&out, &str](const auto& ...arg) { ((out << str << arg, str = "."), ...); }, val);
     out << std::endl;
 }

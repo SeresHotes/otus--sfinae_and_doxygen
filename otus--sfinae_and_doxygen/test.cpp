@@ -4,7 +4,7 @@
 #include <list>
 #include <string>
 #include <unordered_set>
-
+ 
 
 #include "ip_gen.h"
 
@@ -65,7 +65,7 @@ TEST(ipPrintTest, containerTypeTest) {
     EXPECT_EQ(out.str(), "127.0.0.1\n");
     out.str("");
 
-    std::vector<int> arr2 = { 192, 168, 0, 1 };
+    std::list<int> arr2 = { 192, 168, 0, 1 };
     ip_print(out, arr2);
     EXPECT_EQ(out.str(), "192.168.0.1\n");
 }    
