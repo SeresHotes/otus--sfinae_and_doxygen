@@ -10,7 +10,7 @@
  * This function can accept val of folowing types:
  * 1) integral
  * 2) std::string
- * 3) iterable
+ * 3) std::vector and std::list
  * 4) std::tuple<Args...>, where Args.. have all the same type
  *
  */
@@ -31,7 +31,8 @@ void ip_print(std::ostream& out, T&& val) {
 }
  
 template<class T,
-    typename std::enable_if_t<is_const_iterable_v<T> && !std::is_convertible_v<T, std::string>, bool> = true>
+    typename std::enable_if_t<is_list_v<std::remove_const_t<std::remove_reference_t<T>>> || 
+                              is_vector_v<std::remove_const_t<std::remove_reference_t<T>>>, bool> = true>
 void ip_print(std::ostream& out, T&& val) {
     auto it = val.begin();
     if (val.end() != val.begin()) {

@@ -78,3 +78,22 @@ struct is_one_type_tuple<std::tuple<T, Args...>> : check_type<T, Args...> {};
 template <class T>
 constexpr bool is_one_type_tuple_v = is_one_type_tuple<T>::value;
 
+
+template <class T>
+struct is_vector : std::false_type {};
+
+template <class ...Args>
+struct is_vector<std::vector<Args...>> : std::true_type {};
+
+template <class T>
+constexpr bool is_vector_v = is_vector<T>::value;
+
+
+template <class T>
+struct is_list : std::false_type {};
+
+template <class ...Args>
+struct is_list<std::list<Args...>> : std::true_type {};
+
+template <class T>
+constexpr bool is_list_v = is_list<T>::value;

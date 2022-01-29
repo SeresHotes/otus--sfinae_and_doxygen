@@ -4,7 +4,7 @@
 #include "ip_gen.h"
 #include <cstdlib>
 using std::cout;
-int main() {
+int main() { 
 	ip_print(cout, char(-1));
 	ip_print(cout, short(0));
 	ip_print(cout, int(2130706433));

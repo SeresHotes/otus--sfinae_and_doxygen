@@ -59,12 +59,12 @@ TEST(ipPrintTest, stringTypeTest) {
 
 TEST(ipPrintTest, containerTypeTest) {
     std::stringstream out;
-
+     
     std::vector<int> arr = { 127, 0, 0, 1 };
-    ip_print(out, arr);
+    ip_print(out, arr); 
     EXPECT_EQ(out.str(), "127.0.0.1\n");
     out.str("");
-
+     
     std::list<int> arr2 = { 192, 168, 0, 1 };
     ip_print(out, arr2);
     EXPECT_EQ(out.str(), "192.168.0.1\n");
