@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,114,111,141"/>
+<area shape="rect" id="node2" href="$structcheck__type.html" title=" " alt="" coords="164,13,325,39"/>
+<area shape="rect" id="node4" href="$structcheck__type.html" title="Checks if template args have the same type." alt="" coords="159,63,331,90"/>
+<area shape="rect" id="node5" href="$structis__list.html" title=" " alt="" coords="201,114,288,141"/>
+<area shape="rect" id="node6" href="$structis__one__type__tuple.html" title="Checks if T is a tuple of objects of the same type." alt="" coords="167,165,323,191"/>
+<area shape="rect" id="node7" href="$structis__vector.html" title=" " alt="" coords="192,215,297,242"/>
+<area shape="rect" id="node3" href="$structis__one__type__tuple_3_01std_1_1tuple_3_01_t_00_01_args_8_8_8_01_4_01_4.html" title="This SFINAE specialization. Look description in another place..." alt="" coords="379,5,540,47"/>
+</map>
